@@ -23,7 +23,7 @@ vcftools \
 	--gzvcf ${RESULTS_DIR}/${RENAME_VCF_GZ} \
 	--out ${RESULTS_DIR}/${PLINK_FILE} \
 	--temp ${TEMP_DIR} \
-	--plink
+	--plink \
 	2> >(tee ${LOG_DIR}/${OUTPUT_FILE}.JOINT.${1}.freq.log >&2)
 
 VCFT_RET=$?

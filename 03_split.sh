@@ -17,6 +17,10 @@
 # Note that we will not be using the mitochondrial chromosomes, so we will
 # extract it now and save it in case it is used again.
 
+
+# Note for twins: mtDNA is interesting, but
+# not so for pedigrees. 
+
 vcftools --gzvcf ${RESULTS_DIR}/${GENO_VCF_GZ} \
 	--chr chrM \
 	--recode \

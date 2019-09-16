@@ -20,7 +20,7 @@
 # Run the picard command
 
 log "Getting coverage on autosomes and sex-chromosomes" 3
-bcftools query -r $(for CHR in `seq 1 22` ; do echo -n "chr${CHR}," ; done),chrX,chrY -f '%DP\n' ${RESULTS_DIR}/${GENO_VCF_GZ} > ${RESULTS_DIR}/${GENO_DP_TXT}
+bcftools query -r $(for CHR in `seq 1 22` ; do echo -n "chr${CHR}," ; done)chrX,chrY -f '%DP\n' ${RESULTS_DIR}/${GENO_VCF_GZ} > ${RESULTS_DIR}/${GENO_DP_TXT}
 BCF_RET=$?
 
 if [ $BCF_RET -ne 0 ]

@@ -20,7 +20,7 @@
 # Run the vcftools command
 
 vcftools \
-	--gzvcf ${RESULTS_DIR}/${RECAL_VCF_GZ} \
+	--gzvcf ${RESULTS_DIR}/${RENAME_VCF_GZ} \
 	--out ${RESULTS_DIR}/${FILTER_VCF} \
 	--temp ${TEMP_DIR} \
 	--maf ${MAF_FILTER} \

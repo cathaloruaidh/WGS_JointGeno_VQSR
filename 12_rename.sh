@@ -23,17 +23,20 @@
 log "Rename samples in VCF to FAM names" 3
 
 
-for LINE in `cat ${SOURCE_DIR}/${SOURCE_FILE}`
-do 
-	#BASE=${LINE##*/}
-	#echo ${BASE%.g.vcf.gz}
-	echo -e "${LINE##*/} $(bcftools query -l ${LINE})" 
-done  \
-	| LC_ALL=C sort -k2,2 \
-	| awk '{print $1}' \
-	| sed -e 's/.g.vcf.gz//' \
-	> ${OUTPUT_FILE}.samples.txt
 
+if [[ ! -f ${OUTPUT_FILE}.samples.txt ]]
+then
+	for LINE in `cat ${SOURCE_DIR}/${SOURCE_FILE}`
+	do 
+		#BASE=${LINE##*/}
+		#echo ${BASE%.g.vcf.gz}
+		echo -e "${LINE##*/} $(bcftools query -l ${LINE})" 
+	done  \
+		| LC_ALL=C sort -k2,2 \
+		| awk '{print $1}' \
+		| sed -e 's/.g.vcf.gz//' \
+		> ${OUTPUT_FILE}.samples.txt
+fi
 
 bcftools reheader -s ${OUTPUT_FILE}.samples.txt -o ${RESULTS_DIR}/${RENAME_VCF_GZ} ${RESULTS_DIR}/${RECAL_VCF_GZ}
 	

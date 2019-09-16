@@ -34,7 +34,7 @@ SOURCE_DIR=${PWD}
 
 LOG_DIR=${SOURCE_DIR}/logs
 RESULTS_DIR=${SOURCE_DIR}/results
-TEMP_DIR=${SOURCE_DIR}/temp
+TEMP_DIR=${SOURCE_DIR}/temp/
 GRAPHICS_DIR=${SOURCE_DIR}/graphics
 
 SCRIPT_DIR=/home/shared/scripts
