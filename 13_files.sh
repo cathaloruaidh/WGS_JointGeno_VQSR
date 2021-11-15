@@ -77,7 +77,7 @@ else
 		if [[ -z "${GENO_INFO}" ]]
 		then
 			#log "Individual ${IID} from family ${FID} not found! Empty genotype." 4
-			GENO_INFO=$( echo -en ${EMPTY} )
+			GENO_INFO=$( echo -en ${EMPTY} | tr ' ' '\t' )
 		fi
 		
 		# add entry to family PED file
@@ -103,7 +103,14 @@ plink --file ${RESULTS_DIR}/${PLINK_FILE}.family --make-bed --out ${RESULTS_DIR}
 
 tabix -f ${RESULTS_DIR}/${RENAME_VCF_GZ}
 
-peddy --plot -p ${NPROCS} --sites hg38 --prefix ${RESULTS_DIR}/${PLINK_FILE} ${RESULTS_DIR}/${RENAME_VCF_GZ} ${FAM_FILE} 2> >(tee ${LOG_DIR}/${OUTPUT_FILE}.JOINT.${1}.peddy.log >&2)
+
+if [[ ${BUILD} == "hg19" ]]
+then
+	peddy --plot -p ${NPROCS} --prefix ${RESULTS_DIR}/${PLINK_FILE} ${RESULTS_DIR}/${RENAME_VCF_GZ} ${FAM_FILE} 2> >(tee ${LOG_DIR}/${OUTPUT_FILE}.JOINT.${1}.peddy.log >&2)
+else
+	peddy --plot -p ${NPROCS} --sites hg38 --prefix ${RESULTS_DIR}/${PLINK_FILE} ${RESULTS_DIR}/${RENAME_VCF_GZ} ${FAM_FILE} 2> >(tee ${LOG_DIR}/${OUTPUT_FILE}.JOINT.${1}.peddy.log >&2)
+fi
+
 mv ${RESULTS_DIR}/${PLINK_NAME}*.png ${GRAPHICS_DIR}
 
 

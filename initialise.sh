@@ -207,18 +207,27 @@ fi
 
 
 
+if [[ $( echo ${BUILD} | grep -E "19" ) ]]
+then
+	GRCH38=${REF_DIR}/${BUILD}/ucsc.hg19.fasta
+	DBSNP146=${REF_DIR}/${BUILD}/dbsnp_138.hg19.vcf.gz
+	DBSNP150=${REF_DIR}/${BUILD}/dbsnp_150.hg19.vcf.gz
+	INDELS=${REF_DIR}/${BUILD}/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz
+	THOUSANDG=${REF_DIR}/${BUILD}/1000G_phase1.snps.high_confidence.hg19.sites.vcf.gz
+	OMNI=${REF_DIR}/${BUILD}/1000G_omni2.5.hg19.sites.vcf.gz
+	HAPMAP=${REF_DIR}/${BUILD}/hapmap_3.3.hg19.sites.vcf.gz
+else
+	GRCH38=${REF_DIR}/${BUILD}/GRCh38_full_analysis_set_plus_decoy_hla.fa
+	DBSNP146=${REF_DIR}/${BUILD}/dbsnp_146.hg38.vcf.gz
+	DBSNP150=${REF_DIR}/${BUILD}/dbsnp_150.hg38.chr.vcf.gz
+	INDELS=${REF_DIR}/${BUILD}/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
+	#THOUSANDG=${REF_DIR}/${BUILD}/1000G_phase1.snps.high_confidence.hg38.vcf.gz
+	THOUSANDG=${REF_DIR}/${BUILD}/1000G_phase3_20170504.sites.GRCh38.vcf.gz
+	OMNI=${REF_DIR}/${BUILD}/1000G_omni2.5.hg38.vcf.gz
+	HAPMAP=${REF_DIR}/${BUILD}/hapmap_3.3.hg38.vcf.gz
 
+fi
 ### Find the Resource Files
-GRCH38=${REF_DIR}/${REFERENCE}/GRCh38_full_analysis_set_plus_decoy_hla.fa
-DBSNP146=${REF_DIR}/${REFERENCE}/dbsnp_146.hg38.vcf.gz
-DBSNP150=${REF_DIR}/${REFERENCE}/dbsnp_150.hg38.chr.vcf.gz
-
-INDELS=${REF_DIR}/${REFERENCE}/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
-#THOUSANDG=${REF_DIR}/${REFERENCE}/1000G_phase1.snps.high_confidence.hg38.vcf.gz
-THOUSANDG=${REF_DIR}/${REFERENCE}/1000G_phase3_20170504.sites.GRCh38.vcf.gz
-OMNI=${REF_DIR}/${REFERENCE}/1000G_omni2.5.hg38.vcf.gz
-HAPMAP=${REF_DIR}/${REFERENCE}/hapmap_3.3.hg38.vcf.gz
-
 
 
 if [[ -z "${REF_FASTA}" ]]

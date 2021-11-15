@@ -73,6 +73,7 @@ fi
 
 
 ### Argument processing
+BUILD=GRCh38
 CLEAN=false
 DNSNP=""
 E=100
@@ -99,7 +100,10 @@ cmd(){
 
 usage(){
 echo "\
-`cmd` [OPTION ...]
+`cmd` [OPTION ...]"
+
+echo -e "\
+-b, --build ; hg19 or GRCh38 ; [GRCh38]
 -c, --clean; ; Remove all input files once finished; [${CLEAN}] 
 -d, --dbsnp; <FILE>; dbSNP VCF file; [v 150]
 -e, --end; <INT>; Tool to finish on; [${E}]
@@ -120,8 +124,8 @@ echo "\
 }
 
 
-OPTS=`getopt -o cd:e:f:g:hm:o:r:s:t:v:x: \
-	--long file:,start:,end:,threads:,help,verbose:,dbsnp:,reference:,mem-min:,mem-max:,clean,out:,snpTS:,indelTS:,gatk:,fam: \
+OPTS=`getopt -o b:cd:e:f:g:hm:o:r:s:t:v:x: \
+	--long build:,file:,start:,end:,threads:,help,verbose:,dbsnp:,reference:,mem-min:,mem-max:,clean,out:,snpTS:,indelTS:,gatk:,fam: \
 	-n '$(cmd)' -- "$@"`
 
 if [ $? != 0 ]
@@ -140,6 +144,11 @@ while true; do
 		-a | --apply)
 			APPLY=true
 			shift
+			;;
+
+		-b | --build)
+			BUILD="${2}"
+			shift 2
 			;;
 
 		-c | --clean)
