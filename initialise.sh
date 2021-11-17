@@ -121,7 +121,6 @@ log " " 3
 
 
 ### Set the program paths
-PICARD_FILE=${TOOL_DIR}/picard.jar
 
 GATK34_FILE=${TOOL_DIR}/gatk/GenomeAnalysisTK_3.4.jar
 GATK37_FILE=${TOOL_DIR}/gatk/GenomeAnalysisTK_3.7.jar
@@ -159,14 +158,6 @@ fi
 if [ ! -x $(command -v samtools) ]
 then
 	log "Error: samtools not found." 1
-	exit 6
-fi
-
-
-
-if [ ! -f ${PICARD_FILE} ]
-then
-	log "Error: picard not found." 1
 	exit 6
 fi
 
