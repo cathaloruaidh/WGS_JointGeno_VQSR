@@ -103,7 +103,7 @@ echo "\
 `cmd` [OPTION ...]"
 
 echo -e "\
--b, --build ; hg19 or GRCh38 ; [GRCh38]
+-b, --build; ; hg19 or GRCh38 ; [GRCh38]
 -c, --clean; ; Remove all input files once finished; [${CLEAN}] 
 -d, --dbsnp; <FILE>; dbSNP VCF file; [v 150]
 -e, --end; <INT>; Tool to finish on; [${E}]
