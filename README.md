@@ -21,3 +21,23 @@ The following resource files are required for VQSR:
 - Omni 2.5 SNVs
 - HapMap 3.3 SNVs
 
+# Help
+```
+-b, --build - hg19 or GRCh38 [GRCh38]
+-c, --clean - Remove all input files once finished [false]
+-d, --dbsnp <FILE> - dbSNP VCF file  [v150]
+-e, --end <INT> - Tool to finish on [15]
+-f, --file <FILE> - Name of source file
+-g, --gatk <FILE> - GATK file [GATK v3.8]
+-h, --help - Output this message
+-m, --mem-min <INT> - Java minimum memory [6G]
+-o, --out <FILE> - Output file prefix ["Variant_Filter"]
+-r, --reference <FILE> - FASTA Reference file [GRCh38]
+-s, --start <INT> - Tool to start on [1]
+-t, --threads <INT> - Number of threads for multithreaded processes [4]
+-v, --verbose <INT> - Set verbosity level [3]
+-x, --mem-max <INT> - Java maximum memory [6G]
+    --snpTS <FLOAT> - Tranche Sensitivity for SNPs [99.9]
+    --indelTS <FLOAT> - Tranche Sensitivity for indels; [99.0]
+    --fam <FILE> - FAM file ; []
+ ```
